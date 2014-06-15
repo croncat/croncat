@@ -1,0 +1,5 @@
+/bin/ccat
+/obj/core/alarm_clock.o
+/obj/core/service_mode.o
+/obj/core/timer.o
+/obj/main.o
