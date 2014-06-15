@@ -82,7 +82,7 @@ namespace Cli
 
     void HelpFeature()
     {
-        std::cout << "croncat 0.1a [alpha] ( http://github.com/emilianocanedo/croncat )" << std::endl
+        std::cout << "croncat 0.1a [alpha] ( http://github.com/croncat )" << std::endl
         << "Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"" << std::endl
         << "OPTIONS:" << std::endl
         << "  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)" << std::endl
