@@ -1,0 +1,11 @@
+TO DO LIST:
+
+* Replace all C++ functions (example: cout) with ANSI C functions -are more lightweight-. 
+
+* Refactor Core::Timer with nanoseconds. 
+
+* Refactor Core::AlarmClock with a more precise method.
+
+* Refactor makefile.
+
+* Do a man page!
