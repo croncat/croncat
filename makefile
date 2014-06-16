@@ -36,3 +36,6 @@ install:
 	cp -p ./bin/ccat /usr/bin/ccat
 	chown root /usr/bin/ccat
 	chgrp root /usr/bin/ccat
+
+desinstall:
+	rm /usr/bin/ccat
