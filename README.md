@@ -18,9 +18,10 @@ git clone https://github.com/croncat/croncat.git
 
 ## Install
 
-make
-
-make install
+```
+$ make
+# make install
+```
 
 
 ## Usage
@@ -28,6 +29,7 @@ make install
 For help, type 'ccat' in your terminal.
 
 
-## Bugs
+## Team
 
-Report to: emilianocanedo@gmail.com
+The croncat project is open source and maintained by a team of volunteers.
+You can join the [team on Google Groups](https://groups.google.com/forum/?fromgroups#!forum/croncat).
