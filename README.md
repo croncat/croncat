@@ -28,8 +28,28 @@ $ make
 
 For help, type 'ccat' in your terminal.
 
+```
+$ ccat
+croncat 0.1a
+Usage: ccat [OPTION] {ARGUMENT/S} "COMMAND"
+OPTIONS:
+  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)
+  -i: interval time (format CYCLES SECONDS)
+  -l: left time (format SECONDS)
+EXAMPLES:
+  ccat -d 15 53 30 22 03 2013 0 "gxmessage hello"
+  ccat -i 3 4000 "gxmessage hello"
+  ccat -l 4000 "gxmessage hello"
+croncat: The Portable and Lightweight Time Manager!
+```
+
 
 ## Team
 
 The croncat project is open source and maintained by a team of volunteers.
 You can join the [team on Google Groups](https://groups.google.com/forum/?fromgroups#!forum/croncat).
+
+
+## Downloads!
+
+cron download on [k0ch's homepage](http://koch.bshellz.net/downloads.html).
