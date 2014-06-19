@@ -51,12 +51,15 @@ uninstall:
 
 testmake:
 	@echo "----  Testmake...  ----"
-	@echo $(SRCFILES)
-	@echo $(OBJSY)
-	@echo $(CXXFLAGS)
+	@echo "Compiler: "$(CXX)
+	@echo "Compilation flags: "$(CXXFLAGS)
+	@echo "Debug flags: "$(DBFLAGS)
+	@echo "Source files: "$(SRCFILES)
+	@echo "Object files: "$(OBJS)
+	@echo "Directories: "$(OUTDIRS)
 
 debug: clean dirs $(OBJS_DEBUG)
-	@echo "----  Compilling debug binary...  ----"
+	@echo "----  Building debug binary...  ----"
 	$(CXX) $(DBFLAGS) -o $(PROG_REL) $(OBJS_DEBUG) 
 
 obj/core/%.o: src/core/%.cpp
