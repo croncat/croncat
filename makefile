@@ -18,24 +18,53 @@
 
 # this makefile need refactoring!
 
-all:
-	mkdir ./bin
-	mkdir ./obj
-	mkdir ./obj/core
-	g++ -Wall -fexceptions -g -c ./src/core/alarm_clock.cpp -o ./obj/core/alarm_clock.o
-	g++ -Wall -fexceptions -g -c ./src/core/service_mode.cpp -o ./obj/core/service_mode.o
-	g++ -Wall -fexceptions -g -c ./src/core/timer.cpp -o ./obj/core/timer.o
-	g++ -Wall -fexceptions -g -c ./src/main.cpp -o ./obj/main.o
-	g++  -o ./bin/ccat ./obj/core/alarm_clock.o ./obj/core/service_mode.o ./obj/core/timer.o ./obj/main.o
+.PHONY: all clean install uninstall dirs testmake debug
+CXX=g++
+CXXFLAGS=-Wall -fexceptions -O2
+DBFLAGS= -DDEBUG=1 -W  -g
+
+PROG := ccat
+PROG_REL := bin/$(PROG)
+
+SRCFILES := $(wildcard src/core/*.cpp src/*.cpp)
+OBJS := $(patsubst src/%.cpp,obj/%.o,$(SRCFILES))
+OBJS_DEBUG := $(patsubst src/%.cpp,obj/debug/%.o,$(SRCFILES))
+OUTDIRS= ./bin ./obj ./obj/core ./obj/debug ./obj/debug/core
+
+all: clean dirs  $(OBJS)
+	@echo "----  Compilling...  ----"
+	$(CXX) $(CXXFLAGS) -o $(PROG_REL) $(OBJS) 
+
+dirs:
+	@mkdir -p $(OUTDIRS)
 	
 clean:
-	rm -r ./bin
-	rm -r ./obj
+	@rm -rf $(OUTDIRS)
 
 install:
-	cp -p ./bin/ccat /usr/bin/ccat
-	chown root /usr/bin/ccat
-	chgrp root /usr/bin/ccat
+	@echo "----  Installing...  ----"
+	install -g root -o root -m 755 $(PROG_REL)  /usr/bin/$(PROG)
 
-desinstall:
-	rm /usr/bin/ccat
+uninstall:
+	@echo "----  Uninstalling...  ----"
+	rm /usr/$(PROG_REL)
+
+testmake:
+	@echo "----  Testmake...  ----"
+	@echo $(SRCFILES)
+	@echo $(OBJSY)
+	@echo $(CXXFLAGS)
+
+debug: clean dirs $(OBJS_DEBUG)
+	@echo "----  Compilling debug binary...  ----"
+	$(CXX) $(DBFLAGS) -o $(PROG_REL) $(OBJS_DEBUG) 
+
+obj/core/%.o: src/core/%.cpp
+	$(CXX)  $(CXXFLAGS) -c $< -o $@
+
+obj/%.o: src/%.cpp
+	$(CXX)  $(CXXFLAGS)  -c $< -o $@
+
+
+obj/debug/%.o: src/%.cpp
+	$(CC) $(DBFLAGS) $(CFLAGS)  -c $< -o $@
