@@ -5,6 +5,8 @@ croncat
 
 Croncat is a command line program; is very useful for usage with commands and scripts. We need your help for testing/hacking/developing. The project is in initial times!
 
+Croncat intended as a portable utility (with versions for all operating systems, including Windows and Mac) for fast prototyping of control systems and time management, without requirements of specific os tools, such as crond (linux-bsd) or schtasks (win).
+
 
 ## Getting the source
 
