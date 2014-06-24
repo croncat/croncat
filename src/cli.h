@@ -19,7 +19,8 @@
 #ifndef CLI_H
 #define CLI_H
 
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "features.h"
 
@@ -82,17 +83,17 @@ namespace Cli
 
     void HelpFeature()
     {
-        std::cout << "croncat 0.1a [alpha] ( http://github.com/croncat )" << std::endl
-        << "Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"" << std::endl
-        << "OPTIONS:" << std::endl
-        << "  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)" << std::endl
-        << "  -i: interval time (format CYCLES SECONDS)" << std::endl
-        << "  -l: left time (format SECONDS)" << std::endl
-        << "EXAMPLES:" << std::endl
-        << "  ccat -d 15 53 30 22 03 2013 0 \"gxmessage hello\"" << std::endl
-        << "  ccat -i 3 4000 \"gxmessage hello\"" << std::endl
-        << "  ccat -l 4000 \"gxmessage hello\"" << std::endl
-        << "croncat: The Portable and Lightweight Time Manager!" << std::endl;
+        printf("croncat 0.1a [alpha] ( http://github.com/croncat )\n");
+        printf("Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"\n");
+        printf("OPTIONS:\n");
+        printf("  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n");
+        printf("  -i: interval time (format CYCLES SECONDS)\n");
+        printf("  -l: left time (format SECONDS)\n");
+        printf("EXAMPLES:\n");
+        printf("  ccat -d 15 53 30 22 03 2013 0 \"gxmessage hello\"\n");
+        printf("  ccat -i 3 4000 \"gxmessage hello\"\n");
+        printf("  ccat -l 4000 \"gxmessage hello\"\n");
+        printf("croncat: The Portable and Lightweight Time Manager!\n");
 
         /* Replace exit(0) with a except mechanism! */
         exit(0);

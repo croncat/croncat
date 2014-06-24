@@ -20,8 +20,8 @@
     #include "timer.h"
 #endif
 
-#include <ctime>
 #include <unistd.h>
+#include <time.h>
 
 namespace Core
 {

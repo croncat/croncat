@@ -20,9 +20,8 @@
     #include "alarm_clock.h"
 #endif
 
-#include <iostream>
-#include <ctime>
 #include <unistd.h>
+#include <time.h>
 
 namespace Core
 {
