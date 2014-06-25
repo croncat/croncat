@@ -54,4 +54,4 @@ You can join the [team on Google Groups](https://groups.google.com/forum/?fromgr
 
 ## Downloads!
 
-cron download on [k0ch's homepage](http://koch.bshellz.net/downloads.html).
+croncat download on [k0ch's homepage](http://koch.bshellz.net/downloads.html).
