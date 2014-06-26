@@ -23,15 +23,12 @@ namespace Core
 {
     class Timer
     {
-        private:
-        /* hack this */    
-        int startTime;
+        private:   
         int leftTime;
-        bool initialized;
         bool state;
-        bool getCurrentTime();
-        void timer();
+        bool initialized;
         void initialize();
+        void timer();
 
         public:
         Timer (int seconds);

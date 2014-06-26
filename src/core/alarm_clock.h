@@ -24,15 +24,12 @@ namespace Core
     class AlarmClock
     {
         private:
-        /* hack this */
-        int startTime;
-        int courseTime;
-        int goalTime;
-        bool initialized;
+        int leftTime;
         bool state;
-        void getCurrentTime();
-        void timer();
+        bool initialized;
+        int getCurrentTime();
         void initialize();
+        void timer();
 
         public:
         AlarmClock(int unixTime);

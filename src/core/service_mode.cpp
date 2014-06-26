@@ -38,6 +38,7 @@ namespace Core
     {
         if (!state)
         {
+            /* Replace with so::Service() */
             pid_t pid, sid;
             pid = fork();
             if (pid < 0) exit(EXIT_FAILURE);

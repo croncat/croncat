@@ -29,36 +29,33 @@ namespace Core
 
     AlarmClock::AlarmClock(int unixTime)
     {
-        goalTime = unixTime;
+        leftTime = unixTime - getCurrentTime();
         initialize();
     }
 
     void AlarmClock::initialize()
     {
-        if (goalTime > 0)
-        {
-            initialized = 1;
-            getCurrentTime();
+        if (leftTime > 0) {
+            initialized = true;
             timer();
+        } else {
+            /* leftTime error here */
         }
     }
 
-    void AlarmClock::getCurrentTime()
+    int AlarmClock::getCurrentTime()
     {
-        if (initialized == 1)
-        {
-            int current_time = time(0);
-            startTime = current_time;
-        }
+        int currentTime = time(0);
+        return currentTime;
     }
 
     void AlarmClock::timer()
     {
-        if (goalTime > startTime)
-        {
-            courseTime = goalTime - startTime;
-            sleep (courseTime);
+        if (initialized) {
+            sleep (leftTime);
             state = true;
+        } else {
+            /* initialized error here */
         }
     }
 

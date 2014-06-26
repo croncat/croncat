@@ -35,31 +35,22 @@ namespace Core
 
     void Timer::initialize()
     {
-        if (leftTime > 0)
-        {
-            initialized = 1;
-            getCurrentTime();
+        if (leftTime > 0) {
+            initialized = true;
             timer();
+        } else {
+            /* leftTime error here */
         }
-    }
-
-    bool Timer::getCurrentTime()
-    {
-        if (initialized == 1)
-        {
-            time_t currentTime = time(0);
-            startTime = currentTime;
-            return 1;
-        }
-        else return 0;
     }
 
     void Timer::timer()
     {
-        if (getCurrentTime() == 1)
-        {
+        if (initialized) {
+            /* Replace with so::Msleep(mseconds) */
             sleep (leftTime);
-            state = 1;
+            state = true;
+        } else {
+            /* initialized error here */
         }
     }
 
