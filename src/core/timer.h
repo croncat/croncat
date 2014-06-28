@@ -19,6 +19,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 
+#include "tipes.h"
+
 namespace Core
 {
     class Timer
@@ -27,11 +29,13 @@ namespace Core
         int leftTime;
         bool state;
         bool initialized;
+        int getCurrentTime();
         void initialize();
         void timer();
 
         public:
-        Timer (int seconds);
+        Timer (UnixTime unixtime);
+        Timer (Seconds seconds);
         bool GetState();
     };
 }

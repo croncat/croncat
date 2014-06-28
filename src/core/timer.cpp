@@ -25,11 +25,15 @@
 
 namespace Core
 {
-    using namespace std;
-
-    Timer::Timer(int seconds)
+    Timer::Timer(Seconds seconds)
     {
-        leftTime = seconds;
+        leftTime = seconds.ToInt();
+        initialize();
+    }
+
+    Timer::Timer(UnixTime unixtime)
+    {
+        leftTime = unixtime.ToInt() - getCurrentTime();
         initialize();
     }
 
@@ -41,6 +45,11 @@ namespace Core
         } else {
             /* leftTime error here */
         }
+    }
+
+    int Timer::getCurrentTime()
+    {
+        return time(0);
     }
 
     void Timer::timer()

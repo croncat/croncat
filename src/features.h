@@ -21,8 +21,8 @@
 
 #include <ctime>
 #include <stdlib.h>
+#include "core/tipes.h"
 #include "core/timer.h"
-#include "core/alarm_clock.h"
 #include "core/service_mode.h"
 
 namespace Features
@@ -48,23 +48,24 @@ namespace Features
         Core::ServiceMode CtxDaemon;
 
         int CtxGoalTime = ConvertDateToUnixtime(hour, minutes, seconds, day, month, year, dst);
-        Core::AlarmClock CtxClock(CtxGoalTime);
+        Core::UnixTime ctxUnixtime(CtxGoalTime);
+        Core::Timer CtxTimer(ctxUnixtime);
 
-        if(CtxClock.GetState()) {
+        if(CtxTimer.GetState()) {
             system(command);
         }
     }
 
     void IntervalsTime (int amount, int seconds, char *command)
     {
-        /* hack this */
         Core::ServiceMode CtxDaemon;
 
         if (amount <= 0)
         {
             while(true)
             {
-                Core::Timer CtxTimer(seconds);
+                Core::Seconds ctxSeconds(seconds);
+                Core::Timer CtxTimer(ctxSeconds);
 
                 if(CtxTimer.GetState()) {
                     system(command);
@@ -75,7 +76,8 @@ namespace Features
         {
             for (int i = 0; i < amount; i++)
             {
-                Core::Timer CtxTimer(seconds);
+                Core::Seconds ctxSeconds(seconds);
+                Core::Timer CtxTimer(ctxSeconds);
 
                 if(CtxTimer.GetState()) {
                     system(command);
@@ -88,7 +90,8 @@ namespace Features
     {
         Core::ServiceMode CtxDaemon;
 
-        Core::Timer CtxTimer(seconds);
+        Core::Seconds ctxSeconds(seconds);
+        Core::Timer CtxTimer(ctxSeconds);
 
         if(CtxTimer.GetState()) {
             system(command);
