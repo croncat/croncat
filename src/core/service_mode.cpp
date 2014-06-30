@@ -20,9 +20,16 @@
     #include "service_mode.h"
 #endif
 
-#include <sys/stat.h>
+#ifdef __unix__
+    #include <sys/stat.h>
+    #include <unistd.h>
+#elif _WIN32
+    #include <windows.h>
+#else
+    // others platforms here
+#endif
+
 #include <stdlib.h>
-#include <unistd.h>
 
 namespace Core
 {
@@ -38,19 +45,24 @@ namespace Core
     {
         if (!state)
         {
-            /* Replace with so::Service() */
-            pid_t pid, sid;
-            pid = fork();
-            if (pid < 0) exit(EXIT_FAILURE);
-            if (pid > 0) exit(EXIT_SUCCESS);
-            umask(0);
-            sid = setsid();
-            if (sid < 0) exit(EXIT_FAILURE);
-            if ((chdir("/")) < 0) exit(EXIT_FAILURE);
-            close(STDIN_FILENO);
-            close(STDOUT_FILENO);
-            close(STDERR_FILENO);
-            state = true;
+            #ifdef __unix__
+                pid_t pid, sid;
+                pid = fork();
+                if (pid < 0) exit(EXIT_FAILURE);
+                if (pid > 0) exit(EXIT_SUCCESS);
+                umask(0);
+                sid = setsid();
+                if (sid < 0) exit(EXIT_FAILURE);
+                if ((chdir("/")) < 0) exit(EXIT_FAILURE);
+                close(STDIN_FILENO);
+                close(STDOUT_FILENO);
+                close(STDERR_FILENO);
+                state = true;
+            #elif _WIN32
+                // windows code here
+            #else
+                // others platforms here
+            #endif
         }
     }
 

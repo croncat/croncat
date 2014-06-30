@@ -31,7 +31,8 @@ namespace Core
         bool initialized;
         int getCurrentTime();
         void initialize();
-        void timer();
+        void timer(Seconds seconds);
+        void timer(Milliseconds milliseconds);
 
         public:
         Timer (UnixTime unixtime);

@@ -21,7 +21,17 @@
 
 namespace Core
 {
-	class UnixTime
+    class Milliseconds
+    {
+        private:
+        int value;
+
+        public:
+        Milliseconds(int integer) : value(integer) { }
+        int ToInt() { return value; }
+    };
+
+    class UnixTime
     {
         private:
         int value;

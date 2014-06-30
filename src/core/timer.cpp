@@ -20,31 +20,34 @@
     #include "timer.h"
 #endif
 
-#include <unistd.h>
+#ifdef __unix__
+    #include <unistd.h>
+#elif _WIN32
+    #include <windows.h>
+#else
+    // others platforms here
+#endif
+
 #include <time.h>
 
 namespace Core
 {
     Timer::Timer(Seconds seconds)
     {
-        leftTime = seconds.ToInt();
         initialize();
+        timer(seconds);
     }
 
     Timer::Timer(UnixTime unixtime)
     {
-        leftTime = unixtime.ToInt() - getCurrentTime();
+        Seconds seconds(unixtime.ToInt() - getCurrentTime());
         initialize();
+        timer(seconds);
     }
 
     void Timer::initialize()
     {
-        if (leftTime > 0) {
-            initialized = true;
-            timer();
-        } else {
-            /* leftTime error here */
-        }
+        initialized = true;
     }
 
     int Timer::getCurrentTime()
@@ -52,11 +55,42 @@ namespace Core
         return time(0);
     }
 
-    void Timer::timer()
+    void Timer::timer(Seconds seconds)
     {
         if (initialized) {
-            /* Replace with so::Msleep(mseconds) */
-            sleep (leftTime);
+            
+            #ifdef __unix__
+                struct timespec time;
+                time.tv_sec = seconds.ToInt();
+                time.tv_nsec = (1000 % seconds.ToInt()) * (1000 * 1000 * 1000);
+                nanosleep(&time,NULL); 
+            #elif _WIN32
+                Sleep (seconds.ToInt() * 1000);
+            #else
+                // others platforms here
+            #endif
+
+            state = true;
+        } else {
+            /* initialized error here */
+        }
+    }
+
+    void Timer::timer(Milliseconds milliseconds)
+    {
+        if (initialized) {
+            
+            #ifdef __unix__
+                struct timespec time;
+                time.tv_sec = milliseconds.ToInt();
+                time.tv_nsec = (1000 % milliseconds.ToInt()) * (1000 * 1000);
+                nanosleep(&time,NULL); 
+            #elif _WIN32
+                Sleep (milliseconds.ToInt());
+            #else
+                // others platforms here
+            #endif
+
             state = true;
         } else {
             /* initialized error here */

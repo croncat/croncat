@@ -19,7 +19,7 @@
 #ifndef FEATURES_H
 #define FEATURES_H
 
-#include <ctime>
+#include <time.h>
 #include <stdlib.h>
 #include "core/tipes.h"
 #include "core/timer.h"
@@ -47,8 +47,7 @@ namespace Features
     {
         Core::ServiceMode CtxDaemon;
 
-        int CtxGoalTime = ConvertDateToUnixtime(hour, minutes, seconds, day, month, year, dst);
-        Core::UnixTime ctxUnixtime(CtxGoalTime);
+        Core::UnixTime ctxUnixtime(ConvertDateToUnixtime(hour, minutes, seconds, day, month, year, dst));
         Core::Timer CtxTimer(ctxUnixtime);
 
         if(CtxTimer.GetState()) {
