@@ -28,37 +28,55 @@ namespace Cli
 {
     void DateTimeFeature(int argc, char *argv[])
     {
-        if (argc == 10) {
+        if (argc == 10 && strncmp(argv[1],"-d", 2) == 0) {
 
-            if(strncmp(argv[1],"-d", 2) == 0) {
+            int hour = atoi(argv[2]);
+            int minutes = atoi(argv[3]);
+            int seconds = atoi(argv[4]);
+            int day = atoi(argv[5]);
+            int month = atoi(argv[6]);
+            int year = atoi(argv[7]);
+            int dst = atoi(argv[8]);
 
-                int hour = atoi(argv[2]);
-                int minutes = atoi(argv[3]);
-                int seconds = atoi(argv[4]);
-                int day = atoi(argv[5]);
-                int month = atoi(argv[6]);
-                int year = atoi(argv[7]);
-                int dst = atoi(argv[8]);
+            Features::DateTimeClock(hour, minutes, seconds, day, month, year, dst, argv[9]);
 
-                Features::DateTimeClock(hour, minutes, seconds, day, month, year, dst, argv[9]);
-
-                /* Replace exit(0) with a except mechanism! */
-                exit(0);
-            }
+            exit(0);
         }
     }
 
     void LeftFeature(int argc, char *argv[])
     {
-        if (argc == 4) {
+        if (argc == 5 && strncmp(argv[1],"-l", 2) == 0) {
 
-            if(strncmp(argv[1],"-l", 2) == 0) {
+            int intTime = atoi(argv[2]);
 
-                int seconds = atoi(argv[2]);
+            if (strncmp(argv[3],"ms", 2) == 0)
+            {
+                Features::DelayMilliseconds(intTime, argv[4]);
+                exit(0);
+            }
 
-                Features::LeftTime(seconds, argv[3]);
+            if (strncmp(argv[3],"s", 1) == 0)
+            {
+                Features::DelaySeconds(intTime, argv[4]);
+                exit(0);
+            }
 
-                /* Replace exit(0) with a except mechanism! */
+            if (strncmp(argv[3],"m", 1) == 0)
+            {
+                Features::DelayMinutes(intTime, argv[4]);
+                exit(0);
+            }
+
+            if (strncmp(argv[3],"h", 1) == 0)
+            {
+                Features::DelayHours(intTime, argv[4]);
+                exit(0);
+            }
+
+            if (strncmp(argv[3],"d", 1) == 0)
+            {
+                Features::DelayDays(intTime, argv[4]);
                 exit(0);
             }
         }
@@ -66,16 +84,38 @@ namespace Cli
 
     void IntervalFeature(int argc, char *argv[])
     {
-        if (argc == 5) {
+        if (argc == 6 && strncmp(argv[1],"-i", 2) == 0) {
 
-            if(strncmp(argv[1],"-i", 2) == 0)
+            int amount = atoi(argv[2]);
+            int intTime = atoi(argv[3]);
+
+            if (strncmp(argv[4],"ms", 2) == 0)
             {
-                int amount = atoi(argv[2]);
-                int seconds = atoi(argv[3]);
+                Features::IntervalsMilliseconds(amount, intTime, argv[5]);
+                exit(0);
+            }
 
-                Features::IntervalsTime(amount, seconds, argv[4]);
+            if (strncmp(argv[4],"s", 1) == 0)
+            {
+                Features::IntervalsSeconds(amount, intTime, argv[5]);
+                exit(0);
+            }
 
-                /* Replace exit(0) with a except mechanism! */
+            if (strncmp(argv[4],"m", 1) == 0)
+            {
+                Features::IntervalsMinutes(amount, intTime, argv[5]);
+                exit(0);
+            }
+
+            if (strncmp(argv[4],"h", 1) == 0)
+            {
+                Features::IntervalsHours(amount, intTime, argv[5]);
+                exit(0);
+            }
+
+            if (strncmp(argv[4],"d", 1) == 0)
+            {
+                Features::IntervalsDays(amount, intTime, argv[5]);
                 exit(0);
             }
         }
@@ -83,19 +123,20 @@ namespace Cli
 
     void HelpFeature()
     {
-        printf("croncat 0.1a [alpha] ( http://github.com/croncat )\n");
+        printf("croncat 0.2a [alpha] ( http://github.com/croncat )\n");
         printf("Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"\n");
         printf("OPTIONS:\n");
         printf("  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n");
-        printf("  -i: interval time (format CYCLES SECONDS)\n");
-        printf("  -l: left time (format SECONDS)\n");
+        printf("  -i: interval time (format CYCLES TIME UNIT[ms, s, m, h, d])\n");
+        printf("  -l: left time (format TIME UNIT[ms, s, m, h, d])\n");
         printf("EXAMPLES:\n");
         printf("  ccat -d 15 53 30 22 03 2013 0 \"gxmessage hello\"\n");
-        printf("  ccat -i 3 4000 \"gxmessage hello\"\n");
-        printf("  ccat -l 4000 \"gxmessage hello\"\n");
+        printf("  ccat -i 3 4000 ms \"gxmessage hello\"\n");
+        printf("  ccat -i 5 45 m \"gxmessage hello\"\n");
+        printf("  ccat -l 30 s \"gxmessage hello\"\n");
+        printf("  ccat -l 1 h \"gxmessage hello\"\n");
         printf("croncat: The Portable and Lightweight Time Manager!\n");
 
-        /* Replace exit(0) with a except mechanism! */
         exit(0);
     }
 }

@@ -32,8 +32,35 @@
 
 namespace Core
 {
+    Timer::Timer(Milliseconds milliseconds)
+    {
+        initialize();
+        timer(milliseconds);
+    }
+
     Timer::Timer(Seconds seconds)
     {
+        initialize();
+        timer(seconds);
+    }
+
+    Timer::Timer(Minutes minutes)
+    {
+        Seconds seconds(minutes.ToInt() * 60);
+        initialize();
+        timer(seconds);
+    }
+
+    Timer::Timer(Hours hours)
+    {
+        Seconds seconds(hours.ToInt() * 3600);
+        initialize();
+        timer(seconds);
+    }
+
+    Timer::Timer(Days days)
+    {
+        Seconds seconds(days.ToInt() * 86400);
         initialize();
         timer(seconds);
     }
@@ -60,10 +87,11 @@ namespace Core
         if (initialized) {
             
             #ifdef __unix__
-                struct timespec time;
+                sleep (seconds.ToInt());
+                /* struct timespec time;
                 time.tv_sec = seconds.ToInt();
                 time.tv_nsec = (1000 % seconds.ToInt()) * (1000 * 1000 * 1000);
-                nanosleep(&time,NULL); 
+                nanosleep(&time,NULL); */ 
             #elif _WIN32
                 Sleep (seconds.ToInt() * 1000);
             #else
@@ -81,10 +109,7 @@ namespace Core
         if (initialized) {
             
             #ifdef __unix__
-                struct timespec time;
-                time.tv_sec = milliseconds.ToInt();
-                time.tv_nsec = (1000 % milliseconds.ToInt()) * (1000 * 1000);
-                nanosleep(&time,NULL); 
+                usleep (milliseconds.ToInt() * 1000);
             #elif _WIN32
                 Sleep (milliseconds.ToInt());
             #else

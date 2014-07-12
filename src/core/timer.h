@@ -35,8 +35,12 @@ namespace Core
         void timer(Milliseconds milliseconds);
 
         public:
+        Timer (Milliseconds milliseconds);
         Timer (UnixTime unixtime);
         Timer (Seconds seconds);
+        Timer (Minutes minutes);
+        Timer (Hours hours);
+        Timer (Days days);
         bool GetState();
     };
 }

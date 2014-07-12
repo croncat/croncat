@@ -57,12 +57,12 @@ namespace Core
                 close(STDIN_FILENO);
                 close(STDOUT_FILENO);
                 close(STDERR_FILENO);
-                state = true;
             #elif _WIN32
-                // windows code here
+                FreeConsole(void);
             #else
                 // others platforms here
             #endif
+            state = true;
         }
     }
 
