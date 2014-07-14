@@ -88,7 +88,6 @@ namespace Features
                 system(command);
             }
         }
-
     }
 
     void IntervalsMinutes (int amount, int minutes, char *command)
@@ -269,6 +268,7 @@ namespace Features
                 system(command);
             }
         }
+    }
 }
 
 #endif
