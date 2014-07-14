@@ -65,26 +65,12 @@ namespace Features
         Core::ServiceMode CtxDaemon;
         Core::Milliseconds ctxMilliseconds(milliseconds);
 
-        if (amount <= 0)
+        for (int i = 0; i < amount; i++)
         {
-            while(true)
-            {
-                Core::Timer CtxTimer(ctxMilliseconds);
+            Core::Timer CtxTimer(ctxMilliseconds);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Core::Timer CtxTimer(ctxMilliseconds);
-
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
+            if(CtxTimer.GetState()) {
+                system(command);
             }
         }
     }
@@ -94,28 +80,15 @@ namespace Features
         Core::ServiceMode CtxDaemon;
         Core::Seconds ctxSeconds(seconds);
 
-        if (amount <= 0)
+        for (int i = 0; i < amount; i++)
         {
-            while(true)
-            {
-                Core::Timer CtxTimer(ctxSeconds);
+            Core::Timer CtxTimer(ctxSeconds);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
+            if(CtxTimer.GetState()) {
+                system(command);
             }
         }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Core::Timer CtxTimer(ctxSeconds);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
-            }
-        }
     }
 
     void IntervalsMinutes (int amount, int minutes, char *command)
@@ -123,26 +96,12 @@ namespace Features
         Core::ServiceMode CtxDaemon;
         Core::Minutes ctxMinutes(minutes);
 
-        if (amount <= 0)
+        for (int i = 0; i < amount; i++)
         {
-            while(true)
-            {
-                Core::Timer CtxTimer(ctxMinutes);
+            Core::Timer CtxTimer(ctxMinutes);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Core::Timer CtxTimer(ctxMinutes);
-
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
+            if(CtxTimer.GetState()) {
+                system(command);
             }
         }
     }
@@ -152,26 +111,12 @@ namespace Features
         Core::ServiceMode CtxDaemon;
         Core::Hours ctxHours(hours);
 
-        if (amount <= 0)
+        for (int i = 0; i < amount; i++)
         {
-            while(true)
-            {
-                Core::Timer CtxTimer(ctxHours);
+            Core::Timer CtxTimer(ctxHours);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Core::Timer CtxTimer(ctxHours);
-
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
+            if(CtxTimer.GetState()) {
+                system(command);
             }
         }
     }
@@ -181,26 +126,12 @@ namespace Features
         Core::ServiceMode CtxDaemon;
         Core::Days ctxDays(days);
 
-        if (amount <= 0)
+        for (int i = 0; i < amount; i++)
         {
-            while(true)
-            {
-                Core::Timer CtxTimer(ctxDays);
+            Core::Timer CtxTimer(ctxDays);
 
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                Core::Timer CtxTimer(ctxDays);
-
-                if(CtxTimer.GetState()) {
-                    system(command);
-                }
+            if(CtxTimer.GetState()) {
+                system(command);
             }
         }
     }    
@@ -264,6 +195,80 @@ namespace Features
             system(command);
         }
     }
+
+    void InfiniteLoopMilliseconds (int milliseconds, char *command)
+    {
+        Core::ServiceMode CtxDaemon;
+        Core::Milliseconds ctxMilliseconds(milliseconds);
+
+        while(true)
+        {
+            Core::Timer CtxTimer(ctxMilliseconds);
+
+            if(CtxTimer.GetState()) {
+                system(command);
+            }
+        }
+    }
+
+    void InfiniteLoopSeconds (int seconds, char *command)
+    {
+        Core::ServiceMode CtxDaemon;
+        Core::Seconds ctxSeconds(seconds);
+
+        while(true)
+        {
+            Core::Timer CtxTimer(ctxSeconds);
+
+            if(CtxTimer.GetState()) {
+                system(command);
+            }
+        }
+    }
+
+    void InfiniteLoopMinutes (int minutes, char *command)
+    {
+        Core::ServiceMode CtxDaemon;
+        Core::Minutes ctxMinutes(minutes);
+
+        while(true)
+        {
+            Core::Timer CtxTimer(ctxMinutes);
+
+            if(CtxTimer.GetState()) {
+                system(command);
+            }
+        }
+    }
+
+    void InfiniteLoopHours (int hours, char *command)
+    {
+        Core::ServiceMode CtxDaemon;
+        Core::Hours ctxHours(hours);
+
+        while(true)
+        {
+            Core::Timer CtxTimer(ctxHours);
+
+            if(CtxTimer.GetState()) {
+                system(command);
+            }
+        }
+    }
+
+    void InfiniteLoopDays (int days, char *command)
+    {
+        Core::ServiceMode CtxDaemon;
+        Core::Days ctxDays(days);
+
+        while(true)
+        {
+            Core::Timer CtxTimer(ctxDays);
+
+            if(CtxTimer.GetState()) {
+                system(command);
+            }
+        }
 }
 
 #endif
