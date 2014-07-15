@@ -28,5 +28,7 @@ int main(int argc, char *argv[])
 
     Cli::DateTimeFeature(argc, argv);
 
+    Cli::InfiniteLoop(argc, argv);
+
     Cli::HelpFeature();
 }
