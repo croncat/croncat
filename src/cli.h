@@ -28,7 +28,7 @@ namespace Cli
 {
     void DateTimeFeature(int argc, char *argv[])
     {
-        if (argc == 10 && strncmp(argv[1],"-d", 2) == 0 && strlen(argv[1]) == 2) {
+        if (argc == 10 && strncmp(argv[1],"-dt", 3) == 0 && strlen(argv[1]) == 3) {
 
             int hour = atoi(argv[2]);
             int minutes = atoi(argv[3]);
@@ -44,9 +44,9 @@ namespace Cli
         }
     }
 
-    void LeftFeature(int argc, char *argv[])
+    void DelayFeature(int argc, char *argv[])
     {
-        if (argc == 5 && strncmp(argv[1],"-l", 2) == 0 && strlen(argv[1]) == 2) {
+        if (argc == 5 && strncmp(argv[1],"-d", 2) == 0 && strlen(argv[1]) == 2) {
 
             int intTime = atoi(argv[2]);
 
@@ -161,17 +161,17 @@ namespace Cli
 
     void HelpFeature()
     {
-        printf("croncat 0.2a [alpha] ( http://github.com/croncat )\n");
+        printf("croncat 0.2b [beta] ( http://github.com/croncat )\n");
         printf("Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"\n");
         printf("OPTIONS:\n");
-        printf("  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n");
+        printf("  -dt: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n");
         printf("  -i: interval time (format CYCLES TIME UNIT[ms, s, m, h, d])\n");
-        printf("  -l: left time (format TIME UNIT[ms, s, m, h, d])\n");
+        printf("  -d: delay (format TIME UNIT[ms, s, m, h, d])\n");
         printf("  -il: infinite loop (format TIME UNIT[ms, s, m, h, d])\n");
         printf("EXAMPLES:\n");
-        printf("  ccat -d 15 53 30 22 03 2013 0 \"gxmessage hello\"\n");
+        printf("  ccat -dt 16 01 30 18 07 2014 0 \"gxmessage hello\"\n");
         printf("  ccat -i 3 4000 ms \"gxmessage hello\"\n");
-        printf("  ccat -l 30 s \"gxmessage hello\"\n");
+        printf("  ccat -d 30 s \"gxmessage hello\"\n");
         printf("  ccat -il 1 m \"gxmessage hello\"\n");
         printf("croncat: The Portable and Lightweight Time Manager!\n");
 

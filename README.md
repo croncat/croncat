@@ -32,17 +32,17 @@ For help, type 'ccat' in your terminal.
 
 ```
 $ ccat
-croncat 0.2a [alpha] ( http://github.com/croncat )
+croncat 0.2b [beta] ( http://github.com/croncat )
 Usage: ccat [OPTION] {ARGUMENT/S} "COMMAND"
 OPTIONS:
-  -d: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)
+  -dt: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)
   -i: interval time (format CYCLES TIME UNIT[ms, s, m, h, d])
-  -l: left time (format TIME UNIT[ms, s, m, h, d])
+  -d: delay (format TIME UNIT[ms, s, m, h, d])
   -il: infinite loop (format TIME UNIT[ms, s, m, h, d])
 EXAMPLES:
-  ccat -d 15 53 30 22 03 2013 0 "gxmessage hello"
+  ccat -dt 16 01 30 18 07 2014 0 "gxmessage hello"
   ccat -i 3 4000 ms "gxmessage hello"
-  ccat -l 30 s "gxmessage hello"
+  ccat -d 30 s "gxmessage hello"
   ccat -il 1 m "gxmessage hello"
 croncat: The Portable and Lightweight Time Manager!
 ```

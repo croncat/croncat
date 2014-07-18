@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 {
     /*Command Line Interface*/
 
-    Cli::LeftFeature(argc, argv);
+    Cli::DelayFeature(argc, argv);
 
     Cli::IntervalFeature(argc, argv);
 
