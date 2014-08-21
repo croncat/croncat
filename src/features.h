@@ -48,7 +48,7 @@ namespace Features
         #endif
     }
 
-    void DateTimeClock(int hour, int minutes, int seconds, int day, int month, int year, int dst, char *command)
+    void DateTimeClock(int hour, int minutes, int seconds, int day, int month, int year, int dst, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
 
@@ -56,11 +56,11 @@ namespace Features
         Core::Timer CtxTimer(ctxUnixtime);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void IntervalsMilliseconds (int amount, int milliseconds, char *command)
+    void IntervalsMilliseconds (int amount, int milliseconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Milliseconds ctxMilliseconds(milliseconds);
@@ -70,12 +70,12 @@ namespace Features
             Core::Timer CtxTimer(ctxMilliseconds);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void IntervalsSeconds (int amount, int seconds, char *command)
+    void IntervalsSeconds (int amount, int seconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Seconds ctxSeconds(seconds);
@@ -85,12 +85,12 @@ namespace Features
             Core::Timer CtxTimer(ctxSeconds);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void IntervalsMinutes (int amount, int minutes, char *command)
+    void IntervalsMinutes (int amount, int minutes, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Minutes ctxMinutes(minutes);
@@ -100,12 +100,12 @@ namespace Features
             Core::Timer CtxTimer(ctxMinutes);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void IntervalsHours (int amount, int hours, char *command)
+    void IntervalsHours (int amount, int hours, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Hours ctxHours(hours);
@@ -115,12 +115,12 @@ namespace Features
             Core::Timer CtxTimer(ctxHours);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void IntervalsDays (int amount, int days, char *command)
+    void IntervalsDays (int amount, int days, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Days ctxDays(days);
@@ -130,12 +130,12 @@ namespace Features
             Core::Timer CtxTimer(ctxDays);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }    
 
-    void DelayMilliseconds (int milliseconds, char *command)
+    void DelayMilliseconds (int milliseconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Milliseconds ctxMilliseconds(milliseconds);
@@ -143,11 +143,11 @@ namespace Features
         Core::Timer CtxTimer(ctxMilliseconds);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void DelaySeconds (int seconds, char *command)
+    void DelaySeconds (int seconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Seconds ctxSeconds(seconds);
@@ -155,11 +155,11 @@ namespace Features
         Core::Timer CtxTimer(ctxSeconds);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void DelayMinutes (int minutes, char *command)
+    void DelayMinutes (int minutes, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Minutes ctxMinutes(minutes);
@@ -167,11 +167,11 @@ namespace Features
         Core::Timer CtxTimer(ctxMinutes);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void DelayHours (int hours, char *command)
+    void DelayHours (int hours, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Hours ctxHours(hours);
@@ -179,11 +179,11 @@ namespace Features
         Core::Timer CtxTimer(ctxHours);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void DelayDays (int days, char *command)
+    void DelayDays (int days, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Days ctxDays(days);
@@ -191,11 +191,11 @@ namespace Features
         Core::Timer CtxTimer(ctxDays);
 
         if(CtxTimer.GetState()) {
-            system(command);
+            (*action)();
         }
     }
 
-    void InfiniteLoopMilliseconds (int milliseconds, char *command)
+    void InfiniteLoopMilliseconds (int milliseconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Milliseconds ctxMilliseconds(milliseconds);
@@ -205,12 +205,12 @@ namespace Features
             Core::Timer CtxTimer(ctxMilliseconds);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void InfiniteLoopSeconds (int seconds, char *command)
+    void InfiniteLoopSeconds (int seconds, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Seconds ctxSeconds(seconds);
@@ -220,12 +220,12 @@ namespace Features
             Core::Timer CtxTimer(ctxSeconds);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void InfiniteLoopMinutes (int minutes, char *command)
+    void InfiniteLoopMinutes (int minutes, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Minutes ctxMinutes(minutes);
@@ -235,12 +235,12 @@ namespace Features
             Core::Timer CtxTimer(ctxMinutes);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void InfiniteLoopHours (int hours, char *command)
+    void InfiniteLoopHours (int hours, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Hours ctxHours(hours);
@@ -250,12 +250,12 @@ namespace Features
             Core::Timer CtxTimer(ctxHours);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }
 
-    void InfiniteLoopDays (int days, char *command)
+    void InfiniteLoopDays (int days, void (*action)())
     {
         Core::ServiceMode CtxDaemon;
         Core::Days ctxDays(days);
@@ -265,7 +265,7 @@ namespace Features
             Core::Timer CtxTimer(ctxDays);
 
             if(CtxTimer.GetState()) {
-                system(command);
+                (*action)();
             }
         }
     }

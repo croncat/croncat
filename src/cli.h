@@ -26,6 +26,13 @@
 
 namespace Cli
 {
+    char *command;
+
+    void Action()
+    {
+        system(command);
+    }
+
     void DateTimeFeature(int argc, char *argv[])
     {
         if (argc == 10 && strncmp(argv[1],"-dt", 3) == 0 && strlen(argv[1]) == 3) {
@@ -37,8 +44,10 @@ namespace Cli
             int month = atoi(argv[6]);
             int year = atoi(argv[7]);
             int dst = atoi(argv[8]);
+            
+            command = argv[9];
 
-            Features::DateTimeClock(hour, minutes, seconds, day, month, year, dst, argv[9]);
+            Features::DateTimeClock(hour, minutes, seconds, day, month, year, dst, Action);
 
             exit(0);
         }
@@ -49,34 +58,35 @@ namespace Cli
         if (argc == 5 && strncmp(argv[1],"-d", 2) == 0 && strlen(argv[1]) == 2) {
 
             int intTime = atoi(argv[2]);
+            command = argv[4];
 
             if (strncmp(argv[3],"ms", 2) == 0 && strlen(argv[3]) == 2)
             {
-                Features::DelayMilliseconds(intTime, argv[4]);
+                Features::DelayMilliseconds(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"s", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::DelaySeconds(intTime, argv[4]);
+                Features::DelaySeconds(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"m", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::DelayMinutes(intTime, argv[4]);
+                Features::DelayMinutes(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"h", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::DelayHours(intTime, argv[4]);
+                Features::DelayHours(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"d", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::DelayDays(intTime, argv[4]);
+                Features::DelayDays(intTime, Action);
                 exit(0);
             }
         }
@@ -88,34 +98,35 @@ namespace Cli
 
             int amount = atoi(argv[2]);
             int intTime = atoi(argv[3]);
+            command = argv[5];
 
             if (strncmp(argv[4],"ms", 2) == 0 && strlen(argv[4]) == 2)
             {
-                Features::IntervalsMilliseconds(amount, intTime, argv[5]);
+                Features::IntervalsMilliseconds(amount, intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[4],"s", 1) == 0 && strlen(argv[4]) == 1)
             {
-                Features::IntervalsSeconds(amount, intTime, argv[5]);
+                Features::IntervalsSeconds(amount, intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[4],"m", 1) == 0 && strlen(argv[4]) == 1)
             {
-                Features::IntervalsMinutes(amount, intTime, argv[5]);
+                Features::IntervalsMinutes(amount, intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[4],"h", 1) == 0 && strlen(argv[4]) == 1)
             {
-                Features::IntervalsHours(amount, intTime, argv[5]);
+                Features::IntervalsHours(amount, intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[4],"d", 1) == 0 && strlen(argv[4]) == 1)
             {
-                Features::IntervalsDays(amount, intTime, argv[5]);
+                Features::IntervalsDays(amount, intTime, Action);
                 exit(0);
             }
         }
@@ -126,34 +137,35 @@ namespace Cli
         if (argc == 5 && strncmp(argv[1],"-il", 3) == 0 && strlen(argv[1]) == 3) {
 
             int intTime = atoi(argv[2]);
+            command = argv[4];
 
             if (strncmp(argv[3],"ms", 2) == 0 && strlen(argv[3]) == 2)
             {
-                Features::InfiniteLoopMilliseconds(intTime, argv[4]);
+                Features::InfiniteLoopMilliseconds(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"s", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::InfiniteLoopSeconds(intTime, argv[4]);
+                Features::InfiniteLoopSeconds(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"m", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::InfiniteLoopMinutes(intTime, argv[4]);
+                Features::InfiniteLoopMinutes(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"h", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::InfiniteLoopHours(intTime, argv[4]);
+                Features::InfiniteLoopHours(intTime, Action);
                 exit(0);
             }
 
             if (strncmp(argv[3],"d", 1) == 0 && strlen(argv[3]) == 1)
             {
-                Features::InfiniteLoopDays(intTime, argv[4]);
+                Features::InfiniteLoopDays(intTime, Action);
                 exit(0);
             }
         }
