@@ -1,5 +1,5 @@
 /*
- * core/tipes.h
+ * core/types.h
  * Copyright (C) 2014 Emiliano Gabriel Canedo <emilianocanedo@gmail.com>
  *
  * croncat is free software: you can redistribute it and/or modify it
@@ -16,8 +16,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TIPES_H
-#define TIPES_H
+#ifndef TYPES_H
+#define TYPES_H
 
 namespace Core
 {

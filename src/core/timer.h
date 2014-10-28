@@ -19,7 +19,7 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include "tipes.h"
+#include "types.h"
 
 namespace Core
 {

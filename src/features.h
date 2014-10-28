@@ -21,7 +21,7 @@
 
 #include <time.h>
 #include <stdlib.h>
-#include "core/tipes.h"
+#include "core/types.h"
 #include "core/timer.h"
 #include "core/service_mode.h"
 
