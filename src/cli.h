@@ -185,19 +185,19 @@ namespace Cli
 
     void HelpFeature()
     {
-        printf("croncat 0.2b [beta] ( http://github.com/croncat )\n");
-        printf("Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"\n");
-        printf("OPTIONS:\n");
-        printf("  -dt: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n");
-        printf("  -i: interval time (format CYCLES TIME UNIT[ms, s, m, h, d])\n");
-        printf("  -d: delay (format TIME UNIT[ms, s, m, h, d])\n");
-        printf("  -il: infinite loop (format TIME UNIT[ms, s, m, h, d])\n");
-        printf("EXAMPLES:\n");
-        printf("  ccat -dt 16 01 30 18 07 2014 0 \"gxmessage hello\"\n");
-        printf("  ccat -i 3 4000 ms \"gxmessage hello\"\n");
-        printf("  ccat -d 30 s \"gxmessage hello\"\n");
-        printf("  ccat -il 1 m \"gxmessage hello\"\n");
-        printf("croncat: The Portable and Lightweight Time Manager!\n");
+        printf(	"croncat 0.2b [beta] ( http://github.com/croncat )\n"
+        	"Usage: ccat [OPTION] {ARGUMENT/S} \"COMMAND\"\n"
+        	"OPTIONS:\n"
+        	"  -dt: time and date (format HOUR MINUTES SECONDS DAY MONTH YEAR DST)\n"
+        	"  -i: interval time (format CYCLES TIME UNIT[ms, s, m, h, d])\n"
+        	"  -d: delay (format TIME UNIT[ms, s, m, h, d])\n"
+        	"  -il: infinite loop (format TIME UNIT[ms, s, m, h, d])\n"
+        	"EXAMPLES:\n"
+        	"  ccat -dt 16 01 30 18 07 2014 0 \"gxmessage hello\"\n"
+        	"  ccat -i 3 4000 ms \"gxmessage hello\"\n"
+        	"  ccat -d 30 s \"gxmessage hello\"\n"
+        	"  ccat -il 1 m \"gxmessage hello\"\n"
+        	"croncat: The Portable and Lightweight Time Manager!\n");
 
         exit(0);
     }
